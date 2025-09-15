@@ -33,7 +33,7 @@
         /* PC 화면용 이미지 (md breakpoint: 768px 이상) */
         @media (min-width: 768px) {
             .hero-bg {
-                background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://i.imgur.com/Z1QczFp.jpeg');
+                background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://i.imgur.com/Z1QczFp.jpeg');
                 background-size: cover; /* PC: 다시 화면 전체를 덮도록 설정 */
                 background-position: center; /* PC: 다시 중앙 정렬로 설정 */
             }
@@ -109,18 +109,18 @@
     </nav>
 
     <!-- 섹션 1: 메인 -->
-    <section id="home" class="hero-bg flex flex-col justify-center items-center text-white text-center p-4 -mt-16">
-        <div class="max-w-3xl">
-            <!-- <br> 태그 대신 <span>과 margin-top으로 줄 간격을 명확하게 조정 -->
-            <h1 class="text-3xl md:text-5xl font-black mb-10">
-                <span class="block">일할 줄 아는 3선</span>
-                <span class="block mt-8">지선 승리의 선택!</span>
-                <span class="block mt-8">이경선</span>
-            </h1>
-            <!-- font-light -> font-semibold로 변경하여 텍스트를 굵게 만듭니다. -->
-            <p class="text-lg md:text-2xl font-semibold mb-12 leading-relaxed">서울특별시당 위원장<br>후보 이경선</p>
+    <section id="home" class="hero-bg flex flex-col justify-end md:justify-center -mt-16 relative">
+        <div class="max-w-6xl w-full mx-auto p-4 md:p-8">
+            <div class="max-w-3xl text-white text-center md:text-left">
+                <h1 class="text-3xl md:text-5xl font-black mb-10">
+                    <span class="block">일할 줄 아는 <span class="text-orange-500">3선</span></span>
+                    <span class="block mt-8">지선 <span class="text-orange-500">승리</span>의 선택!</span>
+                    <span class="block mt-8"><span class="text-orange-600">이경선</span></span>
+                </h1>
+                <p class="text-lg md:text-2xl font-semibold mb-12 md:mb-0 leading-relaxed">서울특별시당 위원장<br>후보 <span class="text-orange-600">이경선</span></p>
+            </div>
         </div>
-        <div class="absolute bottom-10 animate-bounce">
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
             <a href="#intro">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </a>
@@ -416,4 +416,3 @@
     </script>
 </body>
 </html>
-
