@@ -109,8 +109,8 @@
     </nav>
 
     <!-- 섹션 1: 메인 -->
-    <section id="home" class="hero-bg flex flex-col justify-end md:justify-center -mt-16 relative">
-        <div class="max-w-6xl w-full mx-auto p-4 md:p-8">
+    <section id="home" class="hero-bg flex flex-col justify-end md:justify-start -mt-16 relative">
+        <div class="max-w-6xl w-full mx-auto p-4 md:p-8 md:pt-32">
             <div class="max-w-3xl text-white text-center md:text-left">
                 <h1 class="text-3xl md:text-5xl font-black mb-6 md:mb-10">
                     <span class="block">일할 줄 아는 <span class="text-orange-500">3선</span></span>
@@ -295,40 +295,48 @@
             const swiperWrapper = document.querySelector('.swiper-wrapper');
             if (swiperWrapper) {
                 const images = [
-                    'https://i.imgur.com/f04QBcc.jpeg', 'https://i.imgur.com/JLRU8iH.jpeg',
-                    'https://i.imgur.com/RsS6km7.jpeg', 'https://i.imgur.com/Ehhmt1A.jpeg',
-                    'https://i.imgur.com/Wv7jadc.jpeg', 'https://i.imgur.com/hSM5RWg.jpeg',
-                    'https://i.imgur.com/icdhLqz.jpeg', 'https://i.imgur.com/XyVGamI.jpeg',
-                    'https://i.imgur.com/c44Knf9.jpeg', 'https://i.imgur.com/BJWRPN5.jpeg',
-                    'https://i.imgur.com/P0S8aAG.jpeg', 'https://i.imgur.com/Kr5Ys1J.jpeg',
-                    'https://i.imgur.com/jXZqkeM.jpeg', 'https://i.imgur.com/9ilfg0g.jpeg',
-                    'https://i.imgur.com/5O5DZE9.jpeg', 'https://i.imgur.com/Cg8PaFf.jpeg',
-                    'https://i.imgur.com/Z1QczFp.jpeg', 'https://i.imgur.com/jBEXMsB.jpeg',
-                    'https://i.imgur.com/pI8gyAn.jpeg', 'https://i.imgur.com/fUVcKi5.jpeg',
-                    'https://i.imgur.com/kz5vqgf.jpeg', 'https://i.imgur.com/NUo6GAX.jpeg',
-                    'https://i.imgur.com/WEdKIkE.jpeg', 'https://i.imgur.com/bb2yo1M.jpeg',
-                    'https://i.imgur.com/pIAvdCI.jpeg', 'https://i.imgur.com/NucdU1K.jpeg',
-                    'https://i.imgur.com/edt8UGb.jpeg', 'https://i.imgur.com/wWO6Zo4.jpeg',
-                    'https://i.imgur.com/YsnfUKD.jpeg', 'https://i.imgur.com/0U7yS52.jpeg',
-                    'https://i.imgur.com/8FFgXrG.jpeg', 'https://i.imgur.com/rccm4vQ.jpeg',
-                    'https://i.imgur.com/vynOSbn.png',
-                    'https://i.imgur.com/TU7reoP.png',
-                    'https://i.imgur.com/xpskzfM.png',
-                    'https://i.imgur.com/FKSjzc7.png',
-                    'https://i.imgur.com/FMjW66g.png'
+                    'https://i.imgur.com/ZeaLTw2.jpeg',
+                    'https://i.imgur.com/Pn0u0oH.jpeg',
+                    'https://i.imgur.com/3OZuN6K.jpeg',
+                    'https://i.imgur.com/T56j9cF.jpeg',
+                    'https://i.imgur.com/uWzA562.jpeg',
+                    'https://i.imgur.com/Qr4LE2k.jpeg',
+                    'https://i.imgur.com/IfLAlcH.jpeg',
+                    'https://i.imgur.com/X7Qmiug.jpeg',
+                    'https://i.imgur.com/KDpCZhh.jpeg',
+                    'https://i.imgur.com/WqfJAz9.jpeg',
+                    'https://i.imgur.com/SrMzSDk.jpeg',
+                    'https://i.imgur.com/mZG8zqr.jpeg',
+                    'https://i.imgur.com/fS6HhpV.jpeg',
+                    'https://i.imgur.com/WJ8j5bx.jpeg',
+                    'https://i.imgur.com/UvReSAP.jpeg',
+                    'https://i.imgur.com/XgrREwm.jpeg',
+                    'https://i.imgur.com/mqAuJzl.jpeg',
+                    'https://i.imgur.com/N2Qb6u4.jpeg',
+                    'https://i.imgur.com/uSQZtS3.jpeg',
+                    'https://i.imgur.com/bBGJ7na.jpeg',
+                    'https://i.imgur.com/SuU07Sl.jpeg',
+                    'https://i.imgur.com/1GU3WdZ.jpeg',
+                    'https://i.imgur.com/0Kqordi.jpeg',
+                    'https://i.imgur.com/Qlq5Q7A.jpeg',
+                    'https://i.imgur.com/jnS2NGF.jpeg',
+                    'https://i.imgur.com/P3dwEF4.jpeg',
+                    'https://i.imgur.com/nM7SzA1.png',
+                    'https://i.imgur.com/vxiHFcf.png',
+                    'https://i.imgur.com/8b18XV9.png',
+                    'https://i.imgur.com/Gj7CeMZ.png',
+                    'https://i.imgur.com/DUwuCkS.png',
+                    'https://i.imgur.com/NucdU1K.jpeg',
+                    'https://i.imgur.com/8FFgXrG.jpeg'
                 ];
 
-                const fixedImage = 'https://i.imgur.com/NucdU1K.jpeg';
-                const fixedPosition = 1;
-
-                let otherImages = images.filter(img => img !== fixedImage);
-                for (let i = otherImages.length - 1; i > 0; i--) {
+                // Shuffle the array
+                for (let i = images.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
-                    [otherImages[i], otherImages[j]] = [otherImages[j], otherImages[i]];
+                    [images[i], images[j]] = [images[j], images[i]];
                 }
-
-                otherImages.splice(fixedPosition, 0, fixedImage);
-                const finalImages = otherImages;
+                
+                const finalImages = images;
 
                 const slidesHTML = finalImages.map(imgSrc => `
                     <div class="swiper-slide">
