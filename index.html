@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="ko" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,6 @@
             background-size: 100% auto; /* 모바일: 가로 너비에 맞추고 사진 비율 유지 */
             background-repeat: no-repeat; /* 이미지 반복 방지 */
             background-position: center center; /* 이미지를 화면 중앙에 위치 */
-            /* background-attachment: fixed; <- 모바일에서는 제거 */
             min-height: calc(100vh - 64px);
         }
         /* PC 화면용 이미지 (md breakpoint: 768px 이상) */
@@ -36,7 +35,7 @@
                 background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://i.imgur.com/Z1QczFp.jpeg');
                 background-size: cover; /* PC: 다시 화면 전체를 덮도록 설정 */
                 background-position: center; /* PC: 다시 중앙 정렬로 설정 */
-                background-attachment: fixed; /* PC에서만 고정 속성 적용 */
+                /* background-attachment: fixed; <- PC에서도 제거하여 호환성 확보 */
             }
         }
         .mobile-menu-item {
@@ -402,5 +401,3 @@
     </script>
 </body>
 </html>
-
-
