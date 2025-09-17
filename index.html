@@ -35,7 +35,6 @@
                 background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://i.imgur.com/Z1QczFp.jpeg');
                 background-size: cover; /* PC: 다시 화면 전체를 덮도록 설정 */
                 background-position: center; /* PC: 다시 중앙 정렬로 설정 */
-                /* background-attachment: fixed; <- PC에서도 제거하여 호환성 확보 */
             }
         }
         .mobile-menu-item {
@@ -65,6 +64,17 @@
         }
         .swiper-slide img {
             cursor: pointer;
+        }
+        /* 비디오 스와이퍼는 모바일에서만 버튼이 보이도록 설정 */
+        .videoSwiper .swiper-button-next,
+        .videoSwiper .swiper-button-prev {
+            display: flex;
+        }
+        @media (min-width: 768px) {
+            .videoSwiper .swiper-button-next,
+            .videoSwiper .swiper-button-prev {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -155,7 +165,7 @@
             <div class="max-w-4xl mx-auto mb-16 rounded-lg shadow-lg overflow-hidden">
                 <div class="relative" style="padding-top: 56.25%;">
                     <div class="absolute top-0 left-0 w-full h-full bg-gray-300 flex items-center justify-center">
-                        <span class="text-gray-500 font-semibold">YouTube 영상이 여기에 표시됩니다.</span>
+                        <span class="text-gray-500 font-semibold">준비중</span>
                     </div>
                 </div>
             </div>
@@ -224,15 +234,58 @@
                 <p class="text-lg text-gray-600 mt-2">언제나 현장에서 함께합니다.</p>
             </div>
             
-            <div class="swiper mySwiper mb-16 relative">
-                <div class="swiper-wrapper">
-                    <!-- 슬라이드가 자바스크립트에 의해 동적으로 생성됩니다. -->
+            <!-- 사진 컨텐츠 -->
+            <div id="photo-content">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-8">사진</h3>
+                <div class="swiper mySwiper relative">
+                    <div class="swiper-wrapper">
+                        <!-- 슬라이드가 자바스크립트에 의해 동적으로 생성됩니다. -->
+                    </div>
+                    <div class="swiper-button-next text-orange-500"></div>
+                    <div class="swiper-button-prev text-orange-500"></div>
                 </div>
-                <div class="swiper-button-next text-orange-500"></div>
-                <div class="swiper-button-prev text-orange-500"></div>
             </div>
 
-            <div class="max-w-4xl mx-auto text-center">
+            <!-- 영상 컨텐츠 -->
+            <div id="video-content" class="mt-16">
+                 <h3 class="text-2xl md:text-3xl font-bold text-center mb-8">영상</h3>
+                <div class="swiper videoSwiper relative">
+                    <div class="swiper-wrapper md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+                        <!-- 실제 유튜브 영상 (숏츠) -->
+                        <div class="swiper-slide">
+                            <div class="rounded-lg shadow-lg overflow-hidden max-w-xs mx-auto w-full">
+                                <div class="relative" style="padding-top: 177.77%;"> <!-- 9:16 aspect ratio -->
+                                     <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/eXhrkKoEsU0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Placeholder videos -->
+                        <div class="swiper-slide">
+                            <div class="rounded-lg shadow-lg overflow-hidden w-full">
+                                <div class="relative" style="padding-top: 56.25%;">
+                                    <div class="absolute top-0 left-0 w-full h-full bg-gray-300 flex items-center justify-center">
+                                        <span class="text-gray-500 font-semibold">준비중</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="rounded-lg shadow-lg overflow-hidden w-full">
+                                <div class="relative" style="padding-top: 56.25%;">
+                                    <div class="absolute top-0 left-0 w-full h-full bg-gray-300 flex items-center justify-center">
+                                        <span class="text-gray-500 font-semibold">준비중</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 모바일용 스와이퍼 버튼 -->
+                    <div class="swiper-button-next text-orange-500"></div>
+                    <div class="swiper-button-prev text-orange-500"></div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center mt-16">
                 <p class="text-lg leading-relaxed text-gray-700 mb-4">개혁신당은 단순한 정당이 아니라<br>대한민국의 미래를 위한 변화의 열망이 모인 곳입니다.<br>저는 그 중심에서 당원 동지 여러분과 함께 개혁의 길을 걷고자 합니다.</p>
                 <p class="text-lg leading-relaxed text-gray-700">저 이경선이 가진 현장 경험과 정책 전문성을 바탕으로,<br>우리 개혁신당을 국민에게 사랑받고 신뢰받는 수권 정당으로 만들겠습니다.</p>
             </div>
@@ -341,38 +394,22 @@
             const partySwiperWrapper = document.querySelector('.mySwiper .swiper-wrapper');
             if (partySwiperWrapper) {
                 const images = [
-                    'https://i.imgur.com/ZeaLTw2.jpeg',
-                    'https://i.imgur.com/Pn0u0oH.jpeg',
-                    'https://i.imgur.com/3OZuN6K.jpeg',
-                    'https://i.imgur.com/T56j9cF.jpeg',
-                    'https://i.imgur.com/uWzA562.jpeg',
-                    'https://i.imgur.com/Qr4LE2k.jpeg',
-                    'https://i.imgur.com/IfLAlcH.jpeg',
-                    'https://i.imgur.com/X7Qmiug.jpeg',
-                    'https://i.imgur.com/KDpCZhh.jpeg',
-                    'https://i.imgur.com/WqfJAz9.jpeg',
-                    'https://i.imgur.com/SrMzSDk.jpeg',
-                    'https://i.imgur.com/mZG8zqr.jpeg',
-                    'https://i.imgur.com/fS6HhpV.jpeg',
-                    'https://i.imgur.com/WJ8j5bx.jpeg',
-                    'https://i.imgur.com/UvReSAP.jpeg',
-                    'https://i.imgur.com/XgrREwm.jpeg',
-                    'https://i.imgur.com/mqAuJzl.jpeg',
-                    'https://i.imgur.com/N2Qb6u4.jpeg',
-                    'https://i.imgur.com/uSQZtS3.jpeg',
-                    'https://i.imgur.com/bBGJ7na.jpeg',
-                    'https://i.imgur.com/SuU07Sl.jpeg',
-                    'https://i.imgur.com/1GU3WdZ.jpeg',
-                    'https://i.imgur.com/0Kqordi.jpeg',
-                    'https://i.imgur.com/Qlq5Q7A.jpeg',
-                    'https://i.imgur.com/jnS2NGF.jpeg',
-                    'https://i.imgur.com/P3dwEF4.jpeg',
-                    'https://i.imgur.com/nM7SzA1.png',
-                    'https://i.imgur.com/vxiHFcf.png',
-                    'https://i.imgur.com/8b18XV9.png',
-                    'https://i.imgur.com/Gj7CeMZ.png',
-                    'https://i.imgur.com/DUwuCkS.png',
-                    'https://i.imgur.com/NucdU1K.jpeg',
+                    'https://i.imgur.com/ZeaLTw2.jpeg', 'https://i.imgur.com/Pn0u0oH.jpeg',
+                    'https://i.imgur.com/3OZuN6K.jpeg', 'https://i.imgur.com/T56j9cF.jpeg',
+                    'https://i.imgur.com/uWzA562.jpeg', 'https://i.imgur.com/Qr4LE2k.jpeg',
+                    'https://i.imgur.com/IfLAlcH.jpeg', 'https://i.imgur.com/X7Qmiug.jpeg',
+                    'https://i.imgur.com/KDpCZhh.jpeg', 'https://i.imgur.com/WqfJAz9.jpeg',
+                    'https://i.imgur.com/SrMzSDk.jpeg', 'https://i.imgur.com/mZG8zqr.jpeg',
+                    'https://i.imgur.com/fS6HhpV.jpeg', 'https://i.imgur.com/WJ8j5bx.jpeg',
+                    'https://i.imgur.com/UvReSAP.jpeg', 'https://i.imgur.com/XgrREwm.jpeg',
+                    'https://i.imgur.com/mqAuJzl.jpeg', 'https://i.imgur.com/N2Qb6u4.jpeg',
+                    'https://i.imgur.com/uSQZtS3.jpeg', 'https://i.imgur.com/bBGJ7na.jpeg',
+                    'https://i.imgur.com/SuU07Sl.jpeg', 'https://i.imgur.com/1GU3WdZ.jpeg',
+                    'https://i.imgur.com/0Kqordi.jpeg', 'https://i.imgur.com/Qlq5Q7A.jpeg',
+                    'https://i.imgur.com/jnS2NGF.jpeg', 'https://i.imgur.com/P3dwEF4.jpeg',
+                    'https://i.imgur.com/nM7SzA1.png', 'https://i.imgur.com/vxiHFcf.png',
+                    'https://i.imgur.com/8b18XV9.png', 'https://i.imgur.com/Gj7CeMZ.png',
+                    'https://i.imgur.com/DUwuCkS.png', 'https://i.imgur.com/NucdU1K.jpeg',
                     'https://i.imgur.com/8FFgXrG.jpeg'
                 ];
 
@@ -391,36 +428,16 @@
                 partySwiperWrapper.innerHTML = slidesHTML;
 
                 new Swiper(".mySwiper", {
-                    slidesPerView: 2,
-                    spaceBetween: 16,
-                    grid: {
-                        rows: 2,
-                        fill: 'row',
-                    },
-                    autoplay: {
-                        delay: 3000,
-                        disableOnInteraction: false,
-                    },
-                    navigation: {
-                        nextEl: ".mySwiper .swiper-button-next",
-                        prevEl: ".mySwiper .swiper-button-prev",
-                    },
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 4,
-                            spaceBetween: 24,
-                            grid: {
-                                rows: 1,
-                            },
-                        },
-                    },
+                    slidesPerView: 2, spaceBetween: 16,
+                    grid: { rows: 2, fill: 'row' },
+                    autoplay: { delay: 3000, disableOnInteraction: false },
+                    navigation: { nextEl: ".mySwiper .swiper-button-next", prevEl: ".mySwiper .swiper-button-prev" },
+                    breakpoints: { 768: { slidesPerView: 4, spaceBetween: 24, grid: { rows: 1 } } }
                 });
 
                 partySwiperWrapper.addEventListener('click', (e) => {
                     const img = e.target.closest('img');
-                    if (img) {
-                        openModal(img.src);
-                    }
+                    if (img) openModal(img.src);
                 });
             }
 
@@ -428,11 +445,9 @@
             const cardNewsSwiperWrapper = document.querySelector('.cardNewsSwiper .swiper-wrapper');
             if (cardNewsSwiperWrapper) {
                 const cardNewsImages = [
-                    'https://i.imgur.com/nM7SzA1.png',
-                    'https://i.imgur.com/lYslRSo.png',
-                    'https://i.imgur.com/7TsG7FK.png',
-                    'https://placehold.co/800x800/3b82f6/ffffff?text=정책+4',
-                    'https://placehold.co/800x800/8b5cf6/ffffff?text=정책+5'
+                    'https://i.imgur.com/nM7SzA1.png', 'https://i.imgur.com/lYslRSo.png',
+                    'https://i.imgur.com/7TsG7FK.png', 'https://placehold.co/800x800/f97316/ffffff?text=준비중',
+                    'https://placehold.co/800x800/f97316/ffffff?text=준비중'
                 ];
 
                 const slidesHTML = cardNewsImages.map(imgSrc => `
@@ -445,35 +460,38 @@
                 cardNewsSwiperWrapper.innerHTML = slidesHTML;
 
                 new Swiper(".cardNewsSwiper", {
-                    slidesPerView: 2,
-                    slidesPerGroup: 1, // 1개씩 넘김
-                    spaceBetween: 16,
-                    loop: true,
-                    autoplay: {
-                        delay: 5000,
-                        disableOnInteraction: false,
-                    },
-                    navigation: {
-                        nextEl: ".cardNewsSwiper .swiper-button-next",
-                        prevEl: ".cardNewsSwiper .swiper-button-prev",
-                    },
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 4,
-                            slidesPerGroup: 1, // 1개씩 넘김
-                            spaceBetween: 24,
-                        },
-                    },
+                    slidesPerView: 2, slidesPerGroup: 1, spaceBetween: 16, loop: true,
+                    autoplay: { delay: 5000, disableOnInteraction: false },
+                    navigation: { nextEl: ".cardNewsSwiper .swiper-button-next", prevEl: ".cardNewsSwiper .swiper-button-prev" },
+                    breakpoints: { 768: { slidesPerView: 4, slidesPerGroup: 1, spaceBetween: 24 } }
                 });
 
                 cardNewsSwiperWrapper.addEventListener('click', (e) => {
                     const img = e.target.closest('img');
-                    if (img) {
-                        openModal(img.src);
-                    }
+                    if (img) openModal(img.src);
                 });
             }
+
+             // --- 비디오 Swiper ---
+            new Swiper(".videoSwiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                navigation: {
+                    nextEl: ".videoSwiper .swiper-button-next",
+                    prevEl: ".videoSwiper .swiper-button-prev",
+                },
+                breakpoints: {
+                    // 768px 이상에서는 swiper 비활성화
+                    768: {
+                        enabled: false,
+                        slidesPerView: 'auto',
+                        spaceBetween: 0,
+                    }
+                }
+            });
+
         });
     </script>
 </body>
 </html>
+
