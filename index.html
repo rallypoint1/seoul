@@ -13,7 +13,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
     <!-- Swiper.js CSS 추가 -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -139,17 +139,25 @@
     
     <!-- 섹션 2: 소개 -->
     <section id="intro" class="py-20 bg-white reveal">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <img src="https://i.imgur.com/w2NAQC1.png" alt="이경선 후보 사진" class="rounded-lg shadow-xl mx-auto w-full max-w-sm">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://i.imgur.com/RykpCiI.jpeg" alt="이경선 후보 사진" class="rounded-lg shadow-xl mx-auto w-full max-w-sm">
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">인사말</h2>
+                    <p class="text-lg leading-relaxed text-gray-700 mb-4">존경하는 당원 동지 여러분,<br>그리고 서울시민 여러분.<br>서울특별시당 위원장 후보 이경선입니다.</p>
+                    <p class="text-lg leading-relaxed text-gray-700 mb-4">저는 우리 개혁신당이 국민의 희망이 되고,<br>대한민국의 미래를 여는 주역이 되어야<br>한다고 굳게 믿습니다.</p>
+                    <p class="text-lg leading-relaxed text-gray-700 mb-4">현장에서 발로 뛰며<br>당원 동지 여러분의 목소리를 듣고,<br>그 뜻을 받들어 우리 당을<br>지선승리의 길로 이끌겠습니다.</p>
+                    <p class="text-xl font-bold mt-4">언제나 당원 여러분과 함께<br>서울시민과 함께 나아가겠습니다.</p>
+                    <p class="mt-4 text-2xl font-bold">이경선 올림</p>
+                </div>
             </div>
-            <div class="text-center md:text-left">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">인사말</h2>
-                <p class="text-lg leading-relaxed text-gray-700 mb-4">존경하는 당원 동지 여러분,<br>그리고 서울시민 여러분.<br>서울특별시당 위원장 후보 이경선입니다.</p>
-                <p class="text-lg leading-relaxed text-gray-700 mb-4">저는 우리 개혁신당이 국민의 희망이 되고,<br>대한민국의 미래를 여는 주역이 되어야<br>한다고 굳게 믿습니다.</p>
-                <p class="text-lg leading-relaxed text-gray-700 mb-4">현장에서 발로 뛰며<br>당원 동지 여러분의 목소리를 듣고,<br>그 뜻을 받들어 우리 당을<br>지선승리의 길로 이끌겠습니다.</p>
-                <p class="text-xl font-bold mt-4">언제나 당원 여러분과 함께<br>서울시민과 함께 나아가겠습니다.</p>
-                <p class="mt-4 text-2xl font-bold">이경선 올림</p>
+            <!-- 유튜브 영상 추가 -->
+            <div class="mt-16 max-w-3xl mx-auto">
+                <div class="relative rounded-lg shadow-lg overflow-hidden" style="padding-top: 56.25%;">
+                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/MfJ25H8v_LU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
     </section>
@@ -259,22 +267,18 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Placeholder videos -->
+                        <!-- Facebook Reel Video -->
                         <div class="swiper-slide">
-                            <div class="rounded-lg shadow-lg overflow-hidden w-full">
-                                <div class="relative" style="padding-top: 56.25%;">
-                                    <div class="absolute top-0 left-0 w-full h-full bg-gray-300 flex items-center justify-center">
-                                        <span class="text-gray-500 font-semibold">준비중</span>
-                                    </div>
+                            <div class="rounded-lg shadow-lg overflow-hidden max-w-xs mx-auto w-full">
+                                <div class="relative" style="padding-top: 141.67%;"> <!-- 476/336 aspect ratio -->
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2909043492615418%2F&show_text=false&width=336&t=0" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
-                            <div class="rounded-lg shadow-lg overflow-hidden w-full">
+                            <div class="rounded-lg shadow-lg overflow-hidden w-full max-w-xs mx-auto">
                                 <div class="relative" style="padding-top: 56.25%;">
-                                    <div class="absolute top-0 left-0 w-full h-full bg-gray-300 flex items-center justify-center">
-                                        <span class="text-gray-500 font-semibold">준비중</span>
-                                    </div>
+                                    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/MfJ25H8v_LU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                                 </div>
                             </div>
                         </div>
@@ -445,9 +449,14 @@
             const cardNewsSwiperWrapper = document.querySelector('.cardNewsSwiper .swiper-wrapper');
             if (cardNewsSwiperWrapper) {
                 const cardNewsImages = [
-                    'https://i.imgur.com/nM7SzA1.png', 'https://i.imgur.com/lYslRSo.png',
-                    'https://i.imgur.com/7TsG7FK.png', 'https://placehold.co/800x800/f97316/ffffff?text=준비중',
-                    'https://placehold.co/800x800/f97316/ffffff?text=준비중'
+                    'https://i.imgur.com/nM7SzA1.png',
+                    'https://i.imgur.com/lYslRSo.png',
+                    'https://i.imgur.com/7TsG7FK.png',
+                    'https://i.imgur.com/J43wyEV.jpeg',
+                    'https://i.imgur.com/RszPfzN.jpeg',
+                    'https://i.imgur.com/VUIQHIl.jpeg',
+                    'https://i.imgur.com/RIWZcAi.jpeg',
+                    'https://i.imgur.com/G1NiBb6.jpeg'
                 ];
 
                 const slidesHTML = cardNewsImages.map(imgSrc => `
@@ -494,4 +503,3 @@
     </script>
 </body>
 </html>
-
